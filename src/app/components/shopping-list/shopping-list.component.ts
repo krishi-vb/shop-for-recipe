@@ -7,11 +7,16 @@ import { Ingredient } from '../../models/ingredient.model';
   styleUrls: ['./shopping-list.component.scss'],
 })
 export class ShoppingListComponent implements OnInit {
-  ingredients: Ingredient[] = [
-    new Ingredient('cardamom', 1),
-    new Ingredient('bayleaf', 1),
-  ];
+  ingredients: Ingredient[] = [];
   constructor() {}
 
   ngOnInit(): void {}
+
+  addIngredient(ingredient: Ingredient) {
+    if (this.ingredients.find((el) => el.name === ingredient.name)) {
+      alert('Ingredient already added');
+      return;
+    }
+    this.ingredients.push(ingredient);
+  }
 }
