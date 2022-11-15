@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/recipe.model';
-import { NavButton } from 'src/app/types/nav-buttons.types';
+import { RecipeService } from 'src/app/repository/recipe.service';
 
 @Component({
   selector: 'app-recipes',
@@ -10,11 +10,13 @@ import { NavButton } from 'src/app/types/nav-buttons.types';
 export class RecipesComponent implements OnInit {
   selectedRecipe: Recipe;
 
-  // btnClick: NavButton = NavButton.RECIPES;
+  constructor(private recipeService: RecipeService) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.recipeService.selectedRecipe.subscribe((recipe) => {
+      this.selectedRecipe = recipe;
+    });
+  }
 
   setSelectedRecipe(recipe) {
     console.log(recipe);

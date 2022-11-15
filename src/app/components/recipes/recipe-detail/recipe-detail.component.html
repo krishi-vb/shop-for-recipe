@@ -10,7 +10,11 @@
       <button class="btn btn-primary dropdown-toggle" appDropdown>
         Manage Recipe <span class="caret"></span>
         <ul class="dropdown-menu">
-          <li><a href="">To Shopping List</a></li>
+          <li>
+            <a (click)="addRecipeToShoppingList()" style="cursor: pointer"
+              >To Shopping List</a
+            >
+          </li>
           <li><a href="">Edit Recipe</a></li>
           <li><a href="">Delete Recipe</a></li>
         </ul>
@@ -31,8 +35,10 @@
 <div class="row" style="margin-top: 1rem">
   <div class="col-xs-12">
     <b>Ingredients:</b>
-    <div *ngFor="let item of recipe.ingredients">
-      {{ item.name | titlecase }}: {{ item.amount }}
-    </div>
+    <ul style="padding-left: 20px">
+      <li *ngFor="let item of recipe.ingredients">
+        {{ item.name | titlecase }}: {{ item.amount }}
+      </li>
+    </ul>
   </div>
 </div>

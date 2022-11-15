@@ -14,7 +14,6 @@ export class AppComponent {
   btnClick: NavButton = NavButton.RECIPES;
 
   navButtonClicked(button: NavButton) {
-    console.log(button, 'clicked');
     this.btnClick = button;
   }
 }
